@@ -10,3 +10,7 @@
 .Error {
   color: red;
 }
+
+.quill > .ql-toolbar:first-child {
+  display: none !important;
+}

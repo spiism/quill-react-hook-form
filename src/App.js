@@ -6,6 +6,13 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { useForm } from "react-hook-form";
 
+// class CustomQuill extends ReactQuill {
+//   destroyEditor() {
+//     if (!this.editor) return;
+//     this.unhookEditor(this.editor);
+//   }
+// }
+
 function App() {
   const {
     register,
@@ -16,11 +23,11 @@ function App() {
   } = useForm();
 
   useEffect(() => {
-    register("emailContent", { required: true, minLength: 11 });
+    register("content", { required: true, minLength: 11 });
   }, [register]);
 
   const onEditorStateChange = (editorState) => {
-    setValue("emailContent", editorState);
+    setValue("content", editorState);
   };
 
   const onSubmit = (data) => {
@@ -42,7 +49,6 @@ function App() {
         ["link", "image", "video"],
         ["clean"],
       ],
-      // handlers: { image: this.imageHandler },
     },
     clipboard: { matchVisual: false },
   };
@@ -64,13 +70,13 @@ function App() {
     "video",
     "align",
   ];
-  const test = ` <ol><li><strong><em><u>hom nay la 1 ngay binh thuong<span class="ql-cursor">﻿</span></u></em></strong></li></ol> `;
+  const test = ` <h1><strong><u>jghdfjkghjfdkhgjkfdhgjkfdhgj</u></strong></h1> `;
 
-  const editorContent = watch("emailContent");
+  const editorContent = watch("content");
   return (
     <div className="App">
       <ReactQuill
-        value={editorContent}
+        value={test}
         onChange={onEditorStateChange}
         formats={formats}
         modules={modules}
@@ -78,13 +84,13 @@ function App() {
       <br />
       <br />
       <br />
-      {/* <ReactQuill
+      <ReactQuill
         readOnly={true}
         value={editorContent}
         onChange={onEditorStateChange}
         formats={formats}
         modules={modules}
-      />{" "} */}
+      />{" "}
       {/* <p className="Error">{errors.emailContent && "Enter valid content"}</p> */}
       <input type="submit" onClick={handleSubmit(onSubmit)} />
       <p>{editorContent}</p>
