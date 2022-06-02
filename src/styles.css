@@ -1,0 +1,12 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.ql-editor {
+  height: 200px;
+}
+
+.Error {
+  color: red;
+}
